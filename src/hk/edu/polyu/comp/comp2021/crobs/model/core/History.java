@@ -17,7 +17,7 @@ public class History {
      * Upon a new action, it clears the existing redo queue as that's no longer valid
      * @param action the new action to be recorded
      */
-    public void record(UndoableAction action) {
+    void record(UndoableAction action) {
         undoActionsStack.push(action);
         redoActionsStack.clear();
     }
@@ -26,7 +26,7 @@ public class History {
      * Undoes an action by popping from undo stack (throws error if stack empty) and pushing to redo stack.
      * @return the action that has been undone
      */
-    public UndoableAction undo() {
+    UndoableAction undo() {
         if (! canUndo()) throw new ConflictException("No action to undo.");
         UndoableAction action = undoActionsStack.pop();
         action.undo();
@@ -38,7 +38,7 @@ public class History {
      * Redoes an action by popping from redo stack (throws error if stack empty) and pushing to undo stack.
      * @return the action that has been redone
      */
-    public UndoableAction redo() {
+    UndoableAction redo() {
         if (! canRedo()) throw new ConflictException("No action to redo.");
         UndoableAction action = redoActionsStack.pop();
         action.redo();
@@ -49,21 +49,21 @@ public class History {
     /**
      * @return true if there is something to undo
      */
-    public boolean canUndo() {
+    boolean canUndo() {
         return ! undoActionsStack.isEmpty();
     }
 
     /**
      * @return true if there is something to redo
      */
-    public boolean canRedo() {
+    boolean canRedo() {
         return ! redoActionsStack.isEmpty();
     }
 
     /**
      * Clears history (both undo and redo stack)
      */
-    public void clear() {
+    void clear() {
         undoActionsStack.clear();
         redoActionsStack.clear();
     }

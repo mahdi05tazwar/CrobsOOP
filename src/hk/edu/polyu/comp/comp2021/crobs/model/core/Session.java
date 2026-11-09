@@ -15,7 +15,7 @@ public class Session {
     /**
      * @return true if a user is logged in
      */
-    public boolean isLoggedIn() {
+    boolean isLoggedIn() {
         return currentUser.isPresent();
     }
 
@@ -23,7 +23,7 @@ public class Session {
      * Log in a user
      * @param user the user to be logged in
      */
-    public void login(User user) {
+    void login(User user) {
         if (isLoggedIn()) throw new ConflictException("A user is already logged in.");
         currentUser = Optional.of(user);
     }
@@ -32,7 +32,7 @@ public class Session {
      * Log out the user
      * @return the user that got logged out
      */
-    public User logout() {
+    User logout() {
         if (! isLoggedIn()) throw new PermissionDeniedException("No user is currently logged in.");
         User loggedOut = currentUser.get();
         currentUser = Optional.empty();
@@ -42,7 +42,7 @@ public class Session {
     /**
      * @return the current user if logged in
      */
-    public User requireUser() {
+    User requireUser() {
         if (! isLoggedIn()) throw new PermissionDeniedException("Please log in first.");
         return currentUser.get();
     }
@@ -50,7 +50,7 @@ public class Session {
     /**
      * @return the current user if logged in and is an admin
      */
-    public User requireAdmin() {
+    User requireAdmin() {
         requireUser();
         if (! currentUser.get().canManageRooms()) throw new PermissionDeniedException("Current user is not an admin.");
         return currentUser.get();
@@ -59,15 +59,16 @@ public class Session {
     /**
      * @return the current user if logged in and is a superadmin
      */
-    public User requireSuperAdmin() {
+    User requireSuperAdmin() {
         requireUser();
         if (! currentUser.get().canChangeRoles()) throw new PermissionDeniedException("Current user is no a superadmin.");
+        return currentUser.get();
     }
 
     /**
      * @param newUserObj to replace the existing user object (if any) as to refresh/update it
      */
-    public void refresh(User newUserObj) {
+    void refresh(User newUserObj) {
         if (isLoggedIn() && currentUser.get().getId().equals(newUserObj.getId())) currentUser = Optional.of(newUserObj);
     }
 }
