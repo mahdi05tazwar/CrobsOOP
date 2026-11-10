@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.core;
 
-import hk.edu.polyu.comp.comp2021.crobs.model.core.users.User;
+import hk.edu.polyu.comp.comp2021.crobs.model.users.User;
 import hk.edu.polyu.comp.comp2021.crobs.model.exceptions.ConflictException;
 import hk.edu.polyu.comp.comp2021.crobs.model.exceptions.PermissionDeniedException;
 
