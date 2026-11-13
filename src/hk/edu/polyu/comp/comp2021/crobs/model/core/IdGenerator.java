@@ -6,7 +6,7 @@ import java.util.Comparator;
  * Class to generate unique IDs.
  */
 public class IdGenerator {
-    private static int counter = 0;
+    private int counter = 0;
     private static final int NUM_ID_DIGITS = 4;
     private final String prefix;
 
@@ -30,13 +30,13 @@ public class IdGenerator {
      * @return a unique ID as String
      */
     public String next() {
-        return prefix + String.format("%0"+NUM_ID_DIGITS+"d", counter);
+        return prefix + String.format("%0"+NUM_ID_DIGITS+"d", ++counter);
     }
 
     /**
      * @return a Comparator to compare which ID comes first
      */
-    static Comparator<String> idOrder() {
+    public static Comparator<String> idOrder() {
         return COMPARATOR;
     }
 }

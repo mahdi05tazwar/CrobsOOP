@@ -61,7 +61,7 @@ public class Session {
      */
     User requireSuperAdmin() {
         requireUser();
-        if (! currentUser.get().canChangeRoles()) throw new PermissionDeniedException("Current user is no a superadmin.");
+        if (! currentUser.get().canChangeRoles()) throw new PermissionDeniedException("Current user is not a superadmin.");
         return currentUser.get();
     }
 

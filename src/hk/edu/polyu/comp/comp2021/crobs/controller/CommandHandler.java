@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.crobs.controller;
 
+import hk.edu.polyu.comp.comp2021.crobs.view.ParsedCommand;
+
 /**
  * Interface to handle a parsed command
  */
