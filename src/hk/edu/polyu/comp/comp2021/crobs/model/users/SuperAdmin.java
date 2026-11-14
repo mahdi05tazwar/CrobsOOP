@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.users;
 
-public class SuperAdmin extends User {
+public class SuperAdmin extends AdminUser {
     public SuperAdmin(String id, String name) {
         super(id, name);
     }

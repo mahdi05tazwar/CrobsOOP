@@ -11,14 +11,14 @@ public abstract class User {
     /**
      * @return the user's ID
      */
-    String getId() {
+    public String getId() {
         return this.id;
     }
 
     /**
      * @return the user's name
      */
-    String getName() {
+    public String getName() {
         return this.name;
     }
 
