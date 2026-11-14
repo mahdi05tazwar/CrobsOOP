@@ -1,0 +1,23 @@
+# ---------- Build output ----------
+out/
+*.class
+
+# ---------- IntelliJ: personal files (everything else in .idea/ is shared) ----------
+.idea/workspace.xml
+.idea/shelf/
+.idea/tasks.xml
+.idea/usage.statistics.xml
+.idea/dictionaries/
+.idea/httpRequests/
+.idea/dataSources.local.xml
+# leftover from the sample project template, not used by modules.xml
+.idea/SampleProject.iml
+
+# ---------- Log files created when running Crobs (-html log.html -txt log.txt) ----------
+log.html
+log.txt
+
+# ---------- OS junk ----------
+.DS_Store
+Thumbs.db
+desktop.ini
