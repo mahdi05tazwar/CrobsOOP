@@ -14,6 +14,10 @@ import java.util.List;
 public class UserController {
     private final CrobsSystem system;
 
+    /**
+     * @param system the CrobsSystem instance being used
+     * @param registry the CommandController instance being used (as registry)
+     */
     public UserController(CrobsSystem system, CommandController registry) {
         this.system = system;
         registry.register("login", this::login);

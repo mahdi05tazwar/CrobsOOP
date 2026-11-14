@@ -1,7 +1,7 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.users;
 
 /**
- * Stores a regular user
+ * Stores a regular user.
  */
 public class RegularUser extends User {
     /**

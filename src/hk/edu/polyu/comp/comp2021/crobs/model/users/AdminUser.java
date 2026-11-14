@@ -1,7 +1,7 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.users;
 
 /**
- * Stores an admin user
+ * Stores an admin user.
  */
 public class AdminUser extends RegularUser {
     /**

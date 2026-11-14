@@ -1,10 +1,11 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.users;
 
 /**
- * Represents a base user
+ * Represents a base user.
  */
 public abstract class User {
-    final String id, name;
+    private final String id;
+    private final String name;
 
     /**
      * @param id id of user
@@ -64,6 +65,6 @@ public abstract class User {
 
     @Override
     public String toString() {
-        return id + " (" + name + ", " + getRole().getKeyword() + ")";
+        return getId() + " (" + getName() + ", " + getRole().getKeyword() + ")";
     }
 }

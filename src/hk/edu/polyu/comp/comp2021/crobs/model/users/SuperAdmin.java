@@ -1,7 +1,7 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.users;
 
 /**
- * Stores a superadmin user
+ * Stores a superadmin user.
  */
 public class SuperAdmin extends AdminUser {
     /**
