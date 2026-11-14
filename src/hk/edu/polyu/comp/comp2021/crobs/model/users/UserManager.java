@@ -18,6 +18,10 @@ public class UserManager {
     private final IdGenerator ids = new IdGenerator("U");
     private boolean superAdminCreated = false;
 
+    /**
+     * Creates a superadmin user
+     * @return the created superadmin
+     */
     public SuperAdmin createSuperAdmin() {
         if (superAdminCreated) {
             throw new ConflictException("Superadmin already created");
@@ -29,6 +33,11 @@ public class UserManager {
         return sa;
     }
 
+    /**
+     * Adds a regular user
+     * @param name name of the new user
+     * @return the created user
+     */
     public RegularUser addRegularUser(String name) {
         if (name == null || name.trim().isEmpty()) {
             throw new InvalidInputException("Regular user name cannot be empty");
@@ -39,6 +48,11 @@ public class UserManager {
         return ra;
     }
 
+    /**
+     * Returns a user
+     * @param id id of user
+     * @return the user the id points to
+     */
     public User getUser(String id) {
         User user = users.get(id);
         if (user == null) {
@@ -47,10 +61,20 @@ public class UserManager {
         return user;
     }
 
+    /**
+     * checks if a user exists
+     * @param id id of user
+     * @return if user with this id exists
+     */
     public boolean hasUser (String id) {
         return users.containsKey(id);
     }
 
+    /**
+     * removes a user
+     * @param id id of user needed to be removed
+     * @return the removed user
+     */
     public User removeUser(String id) {
         User user = getUser(id);
         if (user.getRole() != Role.REGULAR) {
@@ -59,6 +83,12 @@ public class UserManager {
         return users.remove(id);
     }
 
+    /**
+     * Changes role of user
+     * @param id id of user whose role is to be changed
+     * @param newRole new role to be assigned
+     * @return affected user
+     */
     public User changeRole(String id, Role newRole) {
         if (newRole == Role.SUPER_ADMIN) {
             throw new InvalidInputException("Cannot change to superadmin role.");
@@ -75,6 +105,10 @@ public class UserManager {
         return newUser;
     }
 
+    /**
+     * Replaces one user with another
+     * @param user replacement user
+     */
     public void replace(User user) {
         if (user == null || !users.containsKey(user.getId())) {
             throw new NotFoundException("User not found for replacement");
@@ -82,11 +116,22 @@ public class UserManager {
         users.put(user.getId(), user);
     }
 
+    /**
+     * Restores a deleted user
+     * @param user user to be restored
+     */
     public void restore (User user) {
         if (user == null) return;
         users.put(user.getId(), user);
     }
 
+    /**
+     * Creates a user
+     * @param id id of new user
+     * @param name name of new user
+     * @param role role of new user
+     * @return created user
+     */
     public static User create(String id, String name, Role role) {
         switch (role) {
             case REGULAR:

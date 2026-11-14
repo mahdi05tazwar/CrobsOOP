@@ -1,8 +1,15 @@
 package hk.edu.polyu.comp.comp2021.crobs.model.users;
 
+/**
+ * Represents a base user
+ */
 public abstract class User {
     final String id, name;
 
+    /**
+     * @param id id of user
+     * @param name name of user
+     */
     protected User(String id, String name) {
         this.id = id;
         this.name = name;
