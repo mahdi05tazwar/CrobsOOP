@@ -45,7 +45,7 @@ public enum Role {
                return r;
            }
        }
-       throw new InvalidInputException("Unknown role: " + s + ". User regular or admin role.");
+       throw new InvalidInputException("Unknown role: " + s + ". Use regular or admin role.");
     }
 
 }

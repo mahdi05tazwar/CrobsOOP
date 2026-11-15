@@ -13,6 +13,7 @@ import java.util.List;
  */
 public class UserController {
     private final CrobsSystem system;
+    private static final int NO_ARG = 0, ONE_ARG = 1, TWO_ARGS = 2;
 
     /**
      * @param system the CrobsSystem instance being used
@@ -28,31 +29,31 @@ public class UserController {
     }
 
     private String login(ParsedCommand cmd) {
-        cmd.requireArgs(1, "login <userId>");
+        cmd.requireArgs(ONE_ARG, "login <userId>");
         User user = system.login(cmd.arg(0));
         return "Logged in as " + OutputFormatter.formatUser(user) + ".";
     }
 
     private String logout(ParsedCommand cmd) {
-        cmd.requireArgs(0, "logout");
+        cmd.requireArgs(NO_ARG, "logout");
         User user = system.logout();
         return "Logged out " + user.getId() + ".";
     }
 
     private String addUser(ParsedCommand cmd) {
-        cmd.requireArgs(1, "addUser <name>");
+        cmd.requireArgs(ONE_ARG, "addUser <name>");
         User user = system.addUser(cmd.arg(0));
         return "Created user " + user.getId() + " (" + user.getName() + ").";
     }
 
     private String removeUser(ParsedCommand cmd) {
-        cmd.requireArgs(1, "removeUser <userId>");
+        cmd.requireArgs(ONE_ARG, "removeUser <userId>");
         List<?> cancelled = system.removeUser(cmd.arg(0));
         return "Removed user " + cmd.arg(0) + "; cancelled " + cancelled.size() + " booking(s).";
     }
 
     private String changeRole(ParsedCommand cmd) {
-        cmd.requireArgs(2, "changeRole <userId> <newRole>");
+        cmd.requireArgs(TWO_ARGS, "changeRole <userId> <newRole>");
         String userId = cmd.arg(0);
         Role newRole = Role.fromString(cmd.arg(1));
         system.changeRole(userId, newRole.getKeyword());

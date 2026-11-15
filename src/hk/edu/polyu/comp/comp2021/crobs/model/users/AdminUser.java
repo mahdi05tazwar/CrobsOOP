@@ -3,7 +3,7 @@ package hk.edu.polyu.comp.comp2021.crobs.model.users;
 /**
  * Stores an admin user.
  */
-public class AdminUser extends RegularUser {
+public class AdminUser extends User {
     /**
      * @param id id of admin user
      * @param name name of admin user

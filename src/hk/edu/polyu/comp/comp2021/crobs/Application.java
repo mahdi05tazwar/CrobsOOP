@@ -10,6 +10,7 @@ import hk.edu.polyu.comp.comp2021.crobs.util.HtmlLogger;
 import hk.edu.polyu.comp.comp2021.crobs.util.TextLogger;
 import hk.edu.polyu.comp.comp2021.crobs.view.CliView;
 
+import java.io.UncheckedIOException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -45,8 +46,14 @@ public final class Application {
         CrobsSystem system = new CrobsSystem();
 
         List<CommandLogger> loggers = new ArrayList<>();
-        loggers.add(new HtmlLogger(htmlPath));
-        loggers.add(new TextLogger(textPath));
+        try {
+            loggers.add(new HtmlLogger(htmlPath));
+            loggers.add(new TextLogger(textPath));
+        }
+        catch (UncheckedIOException e) {
+            System.out.println("Error! Couldn't open log file: " + e.getCause().getMessage());
+            return;
+        }
         CommandController controller = new CommandController(system, loggers);
         new UserController(system, controller);
         new RoomController(system, controller);

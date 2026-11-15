@@ -15,6 +15,9 @@ import java.nio.file.StandardOpenOption;
 public class TextLogger implements CommandLogger {
     private final BufferedWriter writer;
 
+    /**
+     * @param path path to file
+     */
     public TextLogger(String path) {
         try {
             Path filePath = Paths.get(path);

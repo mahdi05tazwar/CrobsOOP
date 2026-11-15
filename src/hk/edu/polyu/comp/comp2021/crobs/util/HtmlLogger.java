@@ -16,6 +16,9 @@ public class HtmlLogger implements CommandLogger {
     private final String path;
     private final List<String> commands = new ArrayList<>();
 
+    /**
+     * @param path path to file
+     */
     public HtmlLogger(String path) {
         this.path = path;
         flushToFile();
@@ -53,6 +56,10 @@ public class HtmlLogger implements CommandLogger {
         }
     }
 
+    /**
+     * @param s string to be escaped
+     * @return modified string
+     */
     public static String escape(String s) {
         if (s == null) {
             return "";

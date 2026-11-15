@@ -42,8 +42,13 @@ public class RoomManager {
         if (capacity < MIN_CAPACITY) {
             throw new InvalidInputException("Capacity must be at least " + MIN_CAPACITY);
         }
-        if (features == null || features.contains(null)) {
+        if (features == null) {
             throw new InvalidInputException("Features set cannot be null or contain null");
+        }
+        for (RoomFeature feature : features) {
+            if (feature == null) {
+                throw new InvalidInputException("Features set cannot be null or contain null");
+            }
         }
         String id = ids.next();
         Room room = new Room(id, type, capacity, features);
